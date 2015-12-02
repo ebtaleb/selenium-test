@@ -23,8 +23,9 @@ for comb in list(itertools.product(values, repeat=6)):
     elem = mydriver.find_element_by_name("program")
 
     mydriver.execute_script(disable_style);
-    # elem.clear()
-    pgm = "".join("%s%s" % tup for tup in zip(variables, comb))
+    elem.clear()
+    pgm = "".join("%s%s\n" % tup for tup in zip(variables, comb))
+    print(pgm)
     elem.send_keys(pgm)
     prog_form.submit()
     if "Congrats" in mydriver.page_source:
